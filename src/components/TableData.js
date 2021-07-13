@@ -6,10 +6,11 @@ const TableData = () => {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState(data);
   const [color, setColor] = useState(true);
-  
+
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=100")
       .then((response) => response.json())
+      .catch(error => console.error(error))
       .then((res) => {
         setData(res.results);
         setOriginalData(res.results);
@@ -41,6 +42,10 @@ const TableData = () => {
     setData(originalData);
     setColor(true);
   };
+
+ 
+
+
 
   return (
     <Container>
